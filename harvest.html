@@ -5537,9 +5537,36 @@ X-RateLimit-Remaining: 49
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
+<h2 id="delete-destroy-custom-field">DELETE: Destroy Custom Field</h2>
+<pre class="highlight shell"><code>curl -X DELETE <span class="s1">'https://harvest.greenhouse.io/v1/custom_fields/{id}'</span>
+-H <span class="s2">"Authorization: Basic MGQwMzFkeODyN2VhZmEMWRjMzc1YZjMqmUwNjsdlMjQ6"</span>
+</code></pre>
+
+<blockquote>
+<p>If the deletion is successful, the above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom Field ID 12345 has been deleted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://harvest.greenhouse.io/v1/custom_fields/{id}</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>id</td><td>The ID of the custom field to delete</td></tr>
+</tbody></table>
+
 <h2 id="get-list-custom-field-options">GET: List Custom Field Options</h2>
 <pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/custom_field/{id}/custom_field_options'</span>
--H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
+-H <span class="s2">"On-Behalf-Of: {greenhouse user ID}"</span> -H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
 </code></pre>
 
 <blockquote>
