@@ -5454,6 +5454,13 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"value_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"generate_email_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"require_approval"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"expose_in_job_board_api"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"api_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"trigger_new_version"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"office_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">456</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"department_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">567</span><span class="p">,</span><span class="w"> </span><span class="mi">890</span><span class="p">],</span><span class="w">
   </span><span class="nt">"custom_field_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name One"</span><span class="p">,</span><span class="w">
@@ -5478,11 +5485,25 @@ X-RateLimit-Remaining: 49
 <tr>
 <td>name</td><td>string</td><td>yes</td><td>The field&rsquo;s name in Greenhouse</td></tr>
 <tr>
-<td>field_type</td><td>string</td><td>yes</td><td>One of job, candidate, application, offer, opening, rejection_question, referral_question.</td></tr>
+<td>field_type</td><td>string</td><td>yes</td><td>One of job, candidate, application, offer, opening.</td></tr>
 <tr>
 <td>value_type</td><td>string</td><td>yes</td><td>One of short_text, long_text, yes_no, single_select, multi_select, currency, currency_range, number, number_range, date, url, or user</td></tr>
 <tr>
-<td>private</td><td>boolean</td><td>no</td><td>Boolean value to say if this field is private in Greenhouse. Defaults to false if not provided.</td></tr>
+<td>private</td><td>boolean</td><td>no</td><td>Boolean value to say if this field is private in Greenhouse. Defaults to false if not provided for non-offer custom fields. For offer custom fields, private is always true.</td></tr>
+<tr>
+<td>required</td><td>boolean</td><td>no</td><td>Boolean value to determine if this field must be filled out in order to save the custom field. Only used for job, offer, and opening type custom fields. Defaults to false.</td></tr>
+<tr>
+<td>require_approval</td><td>boolean</td><td>no</td><td>Boolean value to determine if changes to this custom field triggers re-approvals. Only used for job and opening custom fields. Defaults to false.</td></tr>
+<tr>
+<td>trigger_new_version</td><td>boolean</td><td>no</td><td>Boolean value to determine if changes to this field triggers the automatic creation of a new offer version. Only used in offer custom fields. Defaults to false.</td></tr>
+<tr>
+<td>expose_in_job_board_api</td><td>boolean</td><td>no</td><td>Boolean value to determine if this custom field and its value will be provied in the Job Board API response for this job. These fields are included in the metadata section of the Job Board API response. Only used in job custom fields. Defaults to false.</td></tr>
+<tr>
+<td>api_only</td><td>boolean</td><td>no</td><td>Boolean value to determine if updates to this custom field may only be made via Harvest. Only used in job custom fields. Defaults to false. If this feature is not available for your organization, attempting to create a field with this set to true will return an API Error.</td></tr>
+<tr>
+<td>office_ids</td><td>Array of integers</td><td>no</td><td>If included, this custom field is only displayed on objects associated with these offices. This is only used for job, opening, and offer custom fields. If not included, custom field will be shown for all offices.</td></tr>
+<tr>
+<td>department_ids</td><td>Array of integers</td><td>no</td><td>If included, this custom field is only displayed on objects associated with these departments. This is only used for job, opening, and offer custom fields. If not included, custom field will be shown for all departments.</td></tr>
 <tr>
 <td>custom_field_options</td><td>array of Custom Field Options</td><td>yes for some field_type</td><td>For single_select and multi_select field_types, this is the list of options for that select.</td></tr>
 <tr>
@@ -5537,36 +5558,9 @@ X-RateLimit-Remaining: 49
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<h2 id="delete-destroy-custom-field">DELETE: Destroy Custom Field</h2>
-<pre class="highlight shell"><code>curl -X DELETE <span class="s1">'https://harvest.greenhouse.io/v1/custom_fields/{id}'</span>
--H <span class="s2">"Authorization: Basic MGQwMzFkeODyN2VhZmEMWRjMzc1YZjMqmUwNjsdlMjQ6"</span>
-</code></pre>
-
-<blockquote>
-<p>If the deletion is successful, the above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom Field ID 12345 has been deleted."</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">DELETE https://harvest.greenhouse.io/v1/custom_fields/{id}</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<td>Parameter</td><td>Description</td></tr>
-</thead><tbody>
-<tr>
-<td>id</td><td>The ID of the custom field to delete</td></tr>
-</tbody></table>
-
 <h2 id="get-list-custom-field-options">GET: List Custom Field Options</h2>
 <pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/custom_field/{id}/custom_field_options'</span>
--H <span class="s2">"On-Behalf-Of: {greenhouse user ID}"</span> -H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
+-H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
 </code></pre>
 
 <blockquote>
