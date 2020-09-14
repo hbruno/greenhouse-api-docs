@@ -1775,14 +1775,50 @@ X-RateLimit-Remaining: 49
 
 <blockquote>
 <p>The above returns a JSON response, structured like this:
+<code class="prettyprint">json
 {
-    id: 12345,
-    message: &ldquo;Rejection reason updated to 815 (Higher Salary Offer Made)&rdquo;,
-    success: true
-}</p>
+    &quot;id&quot;: 12345,
+    &quot;message&quot;: &quot;Rejection reason updated to 815 (Higher Salary Offer Made)&quot;,
+    &quot;success&quot;: true
+}
+</code></p>
 </blockquote>
 
 <p>This endpoint updates the rejection reason on a currently rejected application. An application in any other state will return an error. The rejection reason id may be either a custom rejection reason for your organization or a Greenhouse default rejection reason.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH https://harvest.greenhouse.io/v1/applications/{id}/reject</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<td>Header</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>On-Behalf-Of</td><td>ID of the user issuing this request. Required for auditing purposes.</td></tr>
+</tbody></table>
+
+<h3 id="url-parameters">URL parameters</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>id</td><td>ID of the application to update</td></tr>
+</tbody></table>
+
+<h3 id="json-body-parameters">JSON Body Parameters</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Required</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>rejection_reason_id</td><td>yes</td><td>The ID of the new rejection reason</td></tr>
+</tbody></table>
 
 <h2 id="post-unreject-application">POST: Unreject Application</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="s1">'https://harvest.greenhouse.io/v1/applications/{id}/unreject'</span>
