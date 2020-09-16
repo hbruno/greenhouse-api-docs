@@ -219,7 +219,7 @@ When submitting a job application, you will use the <code>id</code> field to spe
 <td>Parameter</td><td>Description</td></tr>
 </thead><tbody>
 <tr>
-<td>content</td><td>If set to <code class="prettyprint">true</code>, include the description, department and office of each job post.</td></tr>
+<td>content</td><td>If set to <code class="prettyprint">true</code>, include the full post description, department, and office of each job post.</td></tr>
 </tbody></table>
 
 <h2 id="retrieve-a-job">Retrieve a job</h2>
@@ -275,7 +275,7 @@ When submitting a job application, you will use the <code>id</code> field to spe
       </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"First Name"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"fields"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"first_name"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"input_text"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
@@ -439,6 +439,10 @@ can be used to dynamically construct your own job application form.</p>
 <h3 id="data-compliance">Data Compliance</h3>
 
 <p>For organizations with GDPR rules configured and operating with a legal basis of explicit consent, the response may contain data_compliance objects. These objects will include whether a response is required and the data retention period in days as configured by the appropriate rule.</p>
+
+<h3 id="board-level-introductions-and-conclusions">Board-level Introductions and Conclusions</h3>
+
+<p>For organizations with Default Descriptions authored on the Job Board, the <code class="prettyprint">content</code> field will include the Board-level Introduction, Post-level Description, and Board-level Conclusion as a single concatenated string.</p>
 
           <h1 id="offices">Offices</h1>
 

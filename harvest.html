@@ -263,6 +263,8 @@ X-RateLimit-Remaining: 49
 <td>Date</td><td>Description</td></tr>
 </thead><tbody>
 <tr>
+<td>September 10, 2020 05:00:00PM</td><td>A new querystring parameter has been added to <a href="#job-posts">job post</a> GET requests to return Board-level Introductions and Conclusions (if present). When included in a request, the &ldquo;content&rdquo; or &ldquo;internal_content&rdquo; fields will return a concatenated string that includes the Board-level introduction, the Post-level description, and the Board-level conclusion.</td></tr>
+<tr>
 <td>May 28, 2020 05:00:00PM</td><td>Candidate photos have been removed from Greenhouse and will no longer be accepted as a field to be anonymized in <a href="#put-anonymize-candidate">PUT Anonymize Candidates</a></td></tr>
 <tr>
 <td>May 5, 2020 12:00:00PM</td><td>Added &ldquo;interview_step&rdquo; field to the scorecards response. This provides the &ldquo;ID&rdquo; of the existing &ldquo;interview&rdquo; field. The &ldquo;name&rdquo; sub-element of the &ldquo;interview_step&rdquo; element should match the current &ldquo;interview&rdquo; element. The &ldquo;interview&rdquo; field is maintained for backward compatibility.</td></tr>
@@ -8229,7 +8231,7 @@ X-RateLimit-Remaining: 49
 </tbody></table>
 
 <h2 id="get-list-job-posts">GET: List Job Posts</h2>
-<pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/job_posts'</span> 
+<pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/job_posts'</span>
 -H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
 </code></pre>
 
@@ -8406,13 +8408,15 @@ X-RateLimit-Remaining: 49
 <td>live</td><td>If <code class="prettyprint">true</code>, return only live job posts.</td></tr>
 <tr>
 <td>active</td><td>If <code class="prettyprint">true</code>, only return active job posts.  If <code class="prettyprint">false</code>, only return deleted job posts.  When omitted, return both active and deleted job posts.</td></tr>
+<tr>
+<td>full_content</td><td>If <code class="prettyprint">true</code>, returns the board introduction, description, and board conclusion as one <code class="prettyprint">content</code> or <code class="prettyprint">internal_content</code> element.  When omitted, only returns the post&rsquo;s editable description.</td></tr>
 </tbody></table>
 
 <p><br>
 <a href="#the-job-post-object">See noteworthy response attributes.</a></p>
 
 <h2 id="get-retrieve-job-post">GET: Retrieve Job Post</h2>
-<pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/job_posts/{id}'</span> 
+<pre class="highlight shell"><code>curl <span class="s1">'https://harvest.greenhouse.io/v1/job_posts/{id}'</span>
 -H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
 </code></pre>
 
@@ -8564,6 +8568,16 @@ X-RateLimit-Remaining: 49
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET https://harvest.greenhouse.io/v1/job_posts/{id}</code></p>
+
+<h3 id="querystring-parameters">Querystring parameters</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>full_content</td><td>If <code class="prettyprint">true</code>, returns the board introduction, description, and board conclusion as one <code class="prettyprint">content</code> or <code class="prettyprint">internal_content</code> element.  When omitted, only returns the post&rsquo;s editable description.</td></tr>
+</tbody></table>
 
 <p><br>
 <a href="#the-job-post-object">See noteworthy response attributes.</a></p>
@@ -8780,6 +8794,8 @@ X-RateLimit-Remaining: 49
 </thead><tbody>
 <tr>
 <td>active</td><td>If <code class="prettyprint">true</code>, only return active job posts.  If <code class="prettyprint">false</code>, only return deleted job posts.  When omitted, return both active and deleted job posts.</td></tr>
+<tr>
+<td>full_content</td><td>If <code class="prettyprint">true</code>, returns the board introduction, description, and board conclusion as one <code class="prettyprint">content</code> or <code class="prettyprint">internal_content</code> element.  When omitted, only returns the post&rsquo;s editable description.</td></tr>
 </tbody></table>
 
 <p><br>
@@ -8961,6 +8977,8 @@ X-RateLimit-Remaining: 49
 <td>content</td><td>If present, will return the text of the job post as posted to the external job board.</td></tr>
 <tr>
 <td>questions</td><td>If present, will return an array of questions associated with this job post.</td></tr>
+<tr>
+<td>full_content</td><td>If <code class="prettyprint">true</code>, returns the board introduction, description, and board conclusion as one <code class="prettyprint">content</code> or <code class="prettyprint">internal_content</code> element.  When omitted, only return the post&rsquo;s editable description.</td></tr>
 </tbody></table>
 
 <p><br>
