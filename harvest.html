@@ -263,6 +263,8 @@ X-RateLimit-Remaining: 49
 <td>Date</td><td>Description</td></tr>
 </thead><tbody>
 <tr>
+<td>September 23, 2020 03:00:00PM</td><td>Attachments have been added at the application level. Previously, an aggregation of all attachments on all applications was included at the candidate level and not at all in the applications endpoint. Now, the applications endpoint includes attachments specific to each application and the candidates endpoint includes attachments in each application specific to that application.</td></tr>
+<tr>
 <td>September 10, 2020 05:00:00PM</td><td>A new querystring parameter has been added to <a href="#job-posts">job post</a> GET requests to return Board-level Introductions and Conclusions (if present). When included in a request, the &ldquo;content&rdquo; or &ldquo;internal_content&rdquo; fields will return a concatenated string that includes the Board-level introduction, the Post-level description, and the Board-level conclusion.</td></tr>
 <tr>
 <td>May 28, 2020 05:00:00PM</td><td>Candidate photos have been removed from Greenhouse and will no longer be accepted as a field to be anonymized in <a href="#put-anonymize-candidate">PUT Anonymize Candidates</a></td></tr>
@@ -619,7 +621,15 @@ X-RateLimit-Remaining: 49
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long_text"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a bio"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -722,7 +732,14 @@ X-RateLimit-Remaining: 49
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">},</span><span class="w">
 </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">69306509</span><span class="p">,</span><span class="w">
@@ -808,7 +825,14 @@ X-RateLimit-Remaining: 49
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack_Smith_Offer_Packet_09_27_2020.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -908,7 +932,14 @@ X-RateLimit-Remaining: 49
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -1048,7 +1079,14 @@ X-RateLimit-Remaining: 49
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1168,7 +1206,14 @@ X-RateLimit-Remaining: 49
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1277,7 +1322,14 @@ X-RateLimit-Remaining: 49
           </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
           </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1392,7 +1444,14 @@ X-RateLimit-Remaining: 49
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1571,7 +1630,14 @@ X-RateLimit-Remaining: 49
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boolean"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1722,7 +1788,14 @@ X-RateLimit-Remaining: 49
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"long_text"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a bio"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1898,7 +1971,14 @@ X-RateLimit-Remaining: 49
       </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"single_select"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Option 1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
 <blockquote>
@@ -2613,7 +2693,14 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65153308</span><span class="p">,</span><span class="w">
@@ -2656,7 +2743,8 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -2865,7 +2953,14 @@ X-RateLimit-Remaining: 49
                     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92120</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Greenhouse Admin"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65153308</span><span class="p">,</span><span class="w">
@@ -2906,7 +3001,8 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3148,7 +3244,14 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65153308</span><span class="p">,</span><span class="w">
@@ -3191,7 +3294,8 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3482,7 +3586,14 @@ X-RateLimit-Remaining: 49
                   </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                   </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-              </span><span class="p">}</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                      </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+                      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+              </span><span class="p">]</span><span class="w">
           </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -3841,7 +3952,8 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">69201604</span><span class="p">,</span><span class="w">
@@ -3873,7 +3985,8 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4913,7 +5026,14 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John_Locke_Offer_Packet_09_27_2017.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offer_packet"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5085,7 +5205,19 @@ X-RateLimit-Remaining: 49
                 </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Justin Locke resume.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resume"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Justin Locke cover leter.pdf"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://prod-heroku.s3.amazonaws.com/..."</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cover_letter"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"educations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
