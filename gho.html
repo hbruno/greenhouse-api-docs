@@ -118,7 +118,7 @@ supports autocomplete!</li>
 <tr>
 <td>Scalars</td><td>The most basic data type. All types (e.g. Employee) have fields that contain scalars or other types that eventually boil down to scalars.</td></tr>
 <tr>
-<td>Enums</td><td>ENUMs are hard-coded values. They are strings that must be a certain value. E.g. an Employee&rsquo;s &ldquo;employmentStatus&rdquo; can only be one of [CONTRACTOR FULL_TIME INTERN PART_TIME TEMPORARY TERMINATED].</td></tr>
+<td>Enums</td><td>ENUMs are hard-coded values. They are strings that must be a certain value. E.g. a Signature Request&rsquo;s &ldquo;status&rdquo; can only be one of [BEING_PROCESSED CANCELED COMPLETED ERROR WAITING_FOR_COUNTER_SIGNATURE WAITING_FOR_SIGNATURE].</td></tr>
 </tbody></table>
 
 <h2 id="authentication">Authentication</h2>
@@ -771,7 +771,7 @@ of the error list.</p>
 <tr>
 <td>employmentStatusFilter</td><td><a href="#employmentstatusfilter">EmploymentStatusFilter</a></td><td>filter employees by their employment status</td><td></td></tr>
 <tr>
-<td>employmentStatuses</td><td><a href="#employmentstatus">[EmploymentStatus]</a></td><td>DEPRECATED. Use employmentStatusFilter instead</td><td></td></tr>
+<td>employmentStatuses</td><td><a href="#string">[String]</a></td><td>DEPRECATED. Use employmentStatusFilter instead</td><td></td></tr>
 <tr>
 <td>first</td><td><a href="#int">Int</a></td><td>Returns the first <em>n</em> elements from the list.</td><td></td></tr>
 <tr>
@@ -806,6 +806,20 @@ of the error list.</p>
 <td>workCountryCodeFilter</td><td><a href="#workcountrycodefilter">WorkCountryCodeFilter</a></td><td>filter employees by their work country code</td><td></td></tr>
 <tr>
 <td>workCountryCodes</td><td><a href="#string">[String]</a></td><td>DEPRECATED. Use WorkCountryCodeFilter instead</td><td></td></tr>
+</tbody></table>
+
+<h2 id="employmentstatuses">employmentStatuses</h2>
+
+<p>A list of employment status custom field options</p>
+
+<table><thead>
+<tr>
+<td>Argument</td><td>Type</td><td>Description</td><td>Required</td></tr>
+</thead><tbody>
+<tr>
+<td>first</td><td><a href="#int">Int</a></td><td>Returns the first <em>n</em> elements from the list.</td><td></td></tr>
+<tr>
+<td>last</td><td><a href="#int">Int</a></td><td>Returns the last <em>n</em> elements from the list.</td><td></td></tr>
 </tbody></table>
 
 <h2 id="location-location">location (<a href="#location">Location</a>)</h2>
@@ -1622,7 +1636,7 @@ mutation {
 <tr>
 <td>email</td><td><a href="#string">String</a></td><td>The employee&rsquo;s work email. They need this in order to sign in</td></tr>
 <tr>
-<td>employmentStatus</td><td><a href="#employmentstatus">EmploymentStatus!</a></td><td></td></tr>
+<td>employmentStatus</td><td><a href="#string">String</a></td><td></td></tr>
 <tr>
 <td>firstName</td><td><a href="#string">String</a></td><td></td></tr>
 <tr>
@@ -1892,7 +1906,7 @@ mutation {
 <tr>
 <td>email</td><td><a href="#string">String</a></td><td></td></tr>
 <tr>
-<td>employmentStatus</td><td><a href="#employmentstatus">EmploymentStatus</a></td><td></td></tr>
+<td>employmentStatus</td><td><a href="#string">String</a></td><td></td></tr>
 <tr>
 <td>firstName</td><td><a href="#string">String</a></td><td></td></tr>
 <tr>
@@ -2180,7 +2194,7 @@ mutation {
 <tr>
 <td>email</td><td><a href="#string">String</a></td><td></td><td></td></tr>
 <tr>
-<td>employmentStatus</td><td><a href="#employmentstatus">EmploymentStatus</a></td><td></td><td></td></tr>
+<td>employmentStatus</td><td><a href="#string">String</a></td><td></td><td></td></tr>
 <tr>
 <td>firstName</td><td><a href="#string">String!</a></td><td></td><td>Required</td></tr>
 <tr>
@@ -2342,7 +2356,7 @@ mutation {
 <tr>
 <td>anyValue</td><td><a href="#boolean">Boolean</a></td><td></td><td></td></tr>
 <tr>
-<td>employmentStatuses</td><td><a href="#employmentstatus">[EmploymentStatus]</a></td><td></td><td></td></tr>
+<td>employmentStatuses</td><td><a href="#string">[String]</a></td><td></td><td></td></tr>
 <tr>
 <td>noValue</td><td><a href="#boolean">Boolean</a></td><td></td><td></td></tr>
 </tbody></table>
@@ -2498,7 +2512,7 @@ mutation {
 <tr>
 <td>email</td><td><a href="#string">String</a></td><td></td><td></td></tr>
 <tr>
-<td>employmentStatus</td><td><a href="#employmentstatus">EmploymentStatus</a></td><td></td><td></td></tr>
+<td>employmentStatus</td><td><a href="#string">String</a></td><td></td><td></td></tr>
 <tr>
 <td>firstName</td><td><a href="#string">String</a></td><td></td><td></td></tr>
 <tr>
@@ -2719,28 +2733,6 @@ depend on the fieldType of its corresponding customField.</p>
 <td>TEAM</td><td>Displayed as a dropdown of teams. Stored as a Team ID.</td></tr>
 <tr>
 <td>TEXT</td><td>Displayed as a single line text field. Stored as a String.</td></tr>
-</tbody></table>
-
-<h2 id="employmentstatus">EmploymentStatus</h2>
-
-<p>Possible employment statuses for an employee</p>
-
-<table><thead>
-<tr>
-<td>Value</td><td>Description</td></tr>
-</thead><tbody>
-<tr>
-<td>CONTRACTOR</td><td></td></tr>
-<tr>
-<td>FULL_TIME</td><td></td></tr>
-<tr>
-<td>INTERN</td><td></td></tr>
-<tr>
-<td>PART_TIME</td><td></td></tr>
-<tr>
-<td>TEMPORARY</td><td></td></tr>
-<tr>
-<td>TERMINATED</td><td></td></tr>
 </tbody></table>
 
 <h2 id="signaturerequeststatus">SignatureRequestStatus</h2>
