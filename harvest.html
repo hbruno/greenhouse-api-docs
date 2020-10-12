@@ -999,6 +999,173 @@ X-RateLimit-Remaining: 49
 
 <p><a href="#the-candidate-object">See noteworthy response attributes.</a></p>
 
+<h2 id="post-add-application-to-candidate-prospect">POST: Add Application to Candidate/Prospect</h2>
+<pre class="highlight shell"><code>curl -X POST <span class="s1">'https://harvest.greenhouse.io/v1/candidates/{id}/applications'</span>
+-H <span class="s2">"Content-Type: application/json"</span>
+-H <span class="s2">"On-Behalf-Of: {greenhouse user ID}"</span>
+-H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
+</code></pre>
+
+<blockquote>
+<p>To create a prospect application for jobs 123 and 456:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">456</span><span class="p">],</span><span class="w">
+  </span><span class="nt">"prospective_office_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">58319</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospective_department_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9021</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospect_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospect_pool_stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7594</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospect_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107468</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>To create a prospect application on no jobs:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>To create a candidate application:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">266926</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"initial_stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2708728</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">770</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resume.pdf"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resume"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6..."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>The above command returns a JSON response, structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38776620</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"candidate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15803530</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"applied_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08T19:50:49.746Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rejected_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_activity_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-04T19:46:40.377Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"public_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Indeed"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"credited_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">770</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colorado"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon Colorado"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"rejection_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rejection_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"jobs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">266926</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Construction Project Manager"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"current_stage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1945557</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Application Review"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1992-01-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my bio"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"prospective_office"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospective_department"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"prospect_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Create a new application for an existing candidate or prospect.</p>
+
+<p>The new application can be a candidate application or a prospect application, depending on the <code class="prettyprint">&quot;prospect&quot;</code> parameter which defaults to <code class="prettyprint">&quot;false&quot;</code>.  The JSON body parameters differ depending on whether you are creating a prospect application or a candidate application.  The main difference is that prospect applications can be considered for zero, one, or multiple jobs.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://harvest.greenhouse.io/v1/candidates/{id}/applications</code></p>
+
+<h3 id="headers">Headers</h3>
+
+<table><thead>
+<tr>
+<td>Header</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>On-Behalf-Of</td><td>ID of the user issuing this request. Required for auditing purposes.</td></tr>
+</tbody></table>
+
+<h3 id="json-body-parameters-for-candidate-application">JSON Body Parameters for Candidate application</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Required</td><td>Type</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>job_id</td><td>Yes</td><td>integer</td><td>The ID of the job you want to create an application to for this candidate</td></tr>
+<tr>
+<td>source_id</td><td>No</td><td>integer</td><td>The id of the source to be credited for this application</td></tr>
+<tr>
+<td>initial_stage_id</td><td>No</td><td>integer</td><td>The ID of the job stage this application will be created in.</td></tr>
+<tr>
+<td>referrer</td><td>No</td><td>object</td><td>An object representing the referrer</td></tr>
+<tr>
+<td>referrer[type]</td><td>No</td><td>string</td><td>A string representing the type of referrer: &#39;id&rsquo;, &#39;email&rsquo;, or &#39;outside&rsquo;</td></tr>
+<tr>
+<td>referrer[value]</td><td>No</td><td>string</td><td>The id of the user who made the referral (not the referrer id)</td></tr>
+<tr>
+<td>attachments</td><td>No</td><td>array</td><td>An array of attachments to be uploaded to this application. See <a href="#post-add-attachment">Add Attachment</a> for parameters.</td></tr>
+</tbody></table>
+
+<h3 id="json-body-parameters-for-prospect-application">JSON Body Parameters for Prospect application</h3>
+
+<table><thead>
+<tr>
+<td>Parameter</td><td>Required</td><td>Type</td><td>Description</td></tr>
+</thead><tbody>
+<tr>
+<td>prospect</td><td>Yes</td><td>boolean</td><td>Set to <code class="prettyprint">&quot;true&quot;</code> in order to create a prospect application.</td></tr>
+<tr>
+<td>job_ids</td><td>No</td><td>array</td><td>An optional array of Job IDs to consider this prospect for.</td></tr>
+<tr>
+<td>source_id</td><td>No</td><td>integer</td><td>The id of the source to be credited for this application</td></tr>
+<tr>
+<td>referrer</td><td>No</td><td>object</td><td>An object representing the referrer</td></tr>
+<tr>
+<td>referrer[type]</td><td>No</td><td>string</td><td>A string representing the type of referrer: &#39;id&rsquo;, &#39;email&rsquo;, or &#39;outside&rsquo;</td></tr>
+<tr>
+<td>referrer[value]</td><td>No</td><td>string</td><td>The id of the user who made the referral (not the referrer id)</td></tr>
+<tr>
+<td>prospect_pool_id</td><td>No</td><td>integer</td><td>Prospect Pool ID.</td></tr>
+<tr>
+<td>prospect_pool_stage_id</td><td>No</td><td>integer</td><td>Prospect Pool Stage ID.  <code class="prettyprint">prospect_pool_id</code> is required, and the prospect pool stage must belong to the given prospect pool.</td></tr>
+<tr>
+<td>prospect_owner_id</td><td>No</td><td>integer</td><td>User ID of the prospect owner.</td></tr>
+<tr>
+<td>prospective_department_id</td><td>No</td><td>integer</td><td>Department ID to consider this prospect for.</td></tr>
+<tr>
+<td>prospective_office_id</td><td>No</td><td>integer</td><td>Office ID to consider this prospect for.  <code class="prettyprint">prospective_department_id</code> is required in order to set a prospective office.</td></tr>
+</tbody></table>
+
 <h2 id="patch-update-application">PATCH: Update Application</h2>
 <pre class="highlight shell"><code>curl -X PATCH <span class="s1">'https://harvest.greenhouse.io/v1/applications/{id}'</span>
 -H <span class="s2">"Content-Type: application/json"</span>
@@ -1547,7 +1714,7 @@ X-RateLimit-Remaining: 49
 <tr>
 <td>content</td><td>No</td><td>string</td><td>Base64 encoded content of the attachment (if you are providing content, you do not need to provide url). String must be UTF-8 encoded.</td></tr>
 <tr>
-<td>url</td><td>No</td><td>string</td><td>Url of the attachment (if you are providing the url, you do not need to provide the content)</td></tr>
+<td>url</td><td>No</td><td>string</td><td>Url of the attachment (if you are providing the url, you do not need to provide the content.) <em>Please note, shareable links from cloud services such as Google Drive will result in a corrupted file. Please use machine accessbile URLs.</em></td></tr>
 <tr>
 <td>visibility</td><td>No</td><td>string</td><td>One of: [&ldquo;public&rdquo;, &ldquo;private&rdquo;, &ldquo;admin_only&rdquo;]. This only applies when attachment type is &ldquo;other&rdquo;, and will be ignored for all other attachment types. If not supplied, type &ldquo;other&rdquo; documents will default to <code class="prettyprint">admin_only</code>. Resumes, cover letters, and take home tests will always be <code class="prettyprint">public</code>. Offer letters and signed offer letters will always be <code class="prettyprint">private</code>.</td></tr>
 <tr>
@@ -3768,7 +3935,7 @@ X-RateLimit-Remaining: 49
 <tr>
 <td>content</td><td>No</td><td>string</td><td>Base64 encoded content of the attachment (if you are providing content, you do not need to provide url). String must be UTF-8 encoded.</td></tr>
 <tr>
-<td>url</td><td>No</td><td>string</td><td>Url of the attachment (if you are providing the url, you do not need to provide the content)</td></tr>
+<td>url</td><td>No</td><td>string</td><td>Url of the attachment (if you are providing the url, you do not need to provide the content.) <em>Please note, shareable links from cloud services such as Google Drive will result in a corrupted file. Please use machine accessbile URLs.</em></td></tr>
 <tr>
 <td>content_type</td><td>No*</td><td>string</td><td>The content-type of the document you are sending. When using a URL, this generally isn&rsquo;t needed, as the responding server will deliver a content type.  This should be included for encoded content.  Accepted content types are: <ul><li>&ldquo;application/atom+xml&rdquo;</li><li>&ldquo;application/javascript&rdquo;</li><li>&ldquo;application/json&rdquo;</li><li>&ldquo;application/msgpack&rdquo;</li><li>&ldquo;application/msword&rdquo;</li><li>&ldquo;application/pdf&rdquo;</li><li>&ldquo;application/rss+xml&rdquo;</li><li>&ldquo;application/vnd.ms-excel&rdquo;</li><li>&ldquo;application/vnd.openxmlformats-<br>officedocument.spreadsheetml.sheet&rdquo;</li><li>&ldquo;application/vnd.openxmlformats-<br>officedocument.wordprocessingml.document&rdquo;</li><li>&ldquo;application/vnd.ms-powerpoint&rdquo;</li><li>&ldquo;application/xml&rdquo;</li><li>&ldquo;application/x-www-form-urlencoded&rdquo;</li><li>&ldquo;application/x-yaml&rdquo;</li><li>&ldquo;application/zip&rdquo;</li><li>&ldquo;multipart/form-data&rdquo;</li><li>&ldquo;image/bmp&rdquo;</li><li>&ldquo;image/gif&rdquo;</li><li>&ldquo;image/jpeg&rdquo;</li><li>&ldquo;image/png&rdquo;</li><li>&ldquo;image/tiff&rdquo;</li><li>&ldquo;text/calendar&rdquo;</li><li>&ldquo;text/css&rdquo;</li><li>&ldquo;text/csv&rdquo;</li><li>&ldquo;text/html&rdquo;</li><li>&ldquo;text/javascript&rdquo;</li><li>&ldquo;text/plain&rdquo;</li><li>&ldquo;text/vcard&rdquo;</li><li>&ldquo;video/mpeg&rdquo;</li></ul></td></tr>
 </tbody></table>
@@ -4062,6 +4229,10 @@ X-RateLimit-Remaining: 49
 <tr>
 <td>social_media_addresses[]</td><td>No</td><td>social_media_address</td><td>Array of social media addresses. Passing an empty array will clear all.</td></tr>
 <tr>
+<td>educations</td><td>No</td><td>Array</td><td>An array of education records. See <a href="#post-add-education">Add Education</a> for parameters.</td></tr>
+<tr>
+<td>employments</td><td>No</td><td>Array</td><td>An array of employment records. See <a href="#post-add-employment">Add Employment</a> for parameters.</td></tr>
+<tr>
 <td>tags[]</td><td>No</td><td>string</td><td>Array of tags as strings. Passing an empty array will clear all.</td></tr>
 <tr>
 <td>custom_fields[]</td><td>No</td><td>custom_field</td><td>Array of hashes containing new custom field values.  Passing an empty array does nothing.</td></tr>
@@ -4090,173 +4261,6 @@ X-RateLimit-Remaining: 49
 </aside>
 
 <p><a href="#the-candidate-object">See noteworthy response attributes.</a></p>
-
-<h2 id="post-add-application-to-candidate-prospect">POST: Add Application to Candidate/Prospect</h2>
-<pre class="highlight shell"><code>curl -X POST <span class="s1">'https://harvest.greenhouse.io/v1/candidates/{id}/applications'</span>
--H <span class="s2">"Content-Type: application/json"</span>
--H <span class="s2">"On-Behalf-Of: {greenhouse user ID}"</span>
--H <span class="s2">"Authorization: Basic MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6"</span>
-</code></pre>
-
-<blockquote>
-<p>To create a prospect application for jobs 123 and 456:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"job_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="mi">456</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"prospective_office_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">58319</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospective_department_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9021</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospect_pool_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospect_pool_stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7594</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospect_owner_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107468</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>To create a prospect application on no jobs:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>To create a candidate application:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"job_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">266926</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"initial_stage_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2708728</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">770</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resume.pdf"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resume"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"content_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<blockquote>
-<p>The above command returns a JSON response, structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">38776620</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"candidate_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15803530</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospect"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"applied_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-08T19:50:49.746Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"rejected_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"last_activity_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-04T19:46:40.377Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"public_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Indeed"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"credited_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">770</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Colorado"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moon Colorado"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"rejection_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"rejection_details"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"jobs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">266926</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Construction Project Manager"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"current_stage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1945557</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Application Review"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-  </span><span class="nt">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1992-01-27"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my bio"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"prospective_office"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospective_department"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"prospect_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"prospect_pool"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"prospect_stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"prospect_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Create a new application for an existing candidate or prospect.</p>
-
-<p>The new application can be a candidate application or a prospect application, depending on the <code class="prettyprint">&quot;prospect&quot;</code> parameter which defaults to <code class="prettyprint">&quot;false&quot;</code>.  The JSON body parameters differ depending on whether you are creating a prospect application or a candidate application.  The main difference is that prospect applications can be considered for zero, one, or multiple jobs.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://harvest.greenhouse.io/v1/candidates/{id}/applications</code></p>
-
-<h3 id="headers">Headers</h3>
-
-<table><thead>
-<tr>
-<td>Header</td><td>Description</td></tr>
-</thead><tbody>
-<tr>
-<td>On-Behalf-Of</td><td>ID of the user issuing this request. Required for auditing purposes.</td></tr>
-</tbody></table>
-
-<h3 id="json-body-parameters-for-candidate-application">JSON Body Parameters for Candidate application</h3>
-
-<table><thead>
-<tr>
-<td>Parameter</td><td>Required</td><td>Type</td><td>Description</td></tr>
-</thead><tbody>
-<tr>
-<td>job_id</td><td>Yes</td><td>integer</td><td>The ID of the job you want to create an application to for this candidate</td></tr>
-<tr>
-<td>source_id</td><td>No</td><td>integer</td><td>The id of the source to be credited for this application</td></tr>
-<tr>
-<td>initial_stage_id</td><td>No</td><td>integer</td><td>The ID of the job stage this application will be created in.</td></tr>
-<tr>
-<td>referrer</td><td>No</td><td>object</td><td>An object representing the referrer</td></tr>
-<tr>
-<td>referrer[type]</td><td>No</td><td>string</td><td>A string representing the type of referrer: &lsquo;id&rsquo;, &#39;email&rsquo;, or &#39;outside&rsquo;</td></tr>
-<tr>
-<td>referrer[value]</td><td>No</td><td>string</td><td>The id of the user who made the referral (not the referrer id)</td></tr>
-<tr>
-<td>attachments</td><td>No</td><td>array</td><td>An array of attachments to be uploaded to this application. See <a href="#post-add-attachment">Add Attachment</a> for parameters.</td></tr>
-</tbody></table>
-
-<h3 id="json-body-parameters-for-prospect-application">JSON Body Parameters for Prospect application</h3>
-
-<table><thead>
-<tr>
-<td>Parameter</td><td>Required</td><td>Type</td><td>Description</td></tr>
-</thead><tbody>
-<tr>
-<td>prospect</td><td>Yes</td><td>boolean</td><td>Set to <code class="prettyprint">&quot;true&quot;</code> in order to create a prospect application.</td></tr>
-<tr>
-<td>job_ids</td><td>No</td><td>array</td><td>An optional array of Job IDs to consider this prospect for.</td></tr>
-<tr>
-<td>source_id</td><td>No</td><td>integer</td><td>The id of the source to be credited for this application</td></tr>
-<tr>
-<td>referrer</td><td>No</td><td>object</td><td>An object representing the referrer</td></tr>
-<tr>
-<td>referrer[type]</td><td>No</td><td>string</td><td>A string representing the type of referrer: &#39;id&rsquo;, &#39;email&rsquo;, or &#39;outside&rsquo;</td></tr>
-<tr>
-<td>referrer[value]</td><td>No</td><td>string</td><td>The id of the user who made the referral (not the referrer id)</td></tr>
-<tr>
-<td>prospect_pool_id</td><td>No</td><td>integer</td><td>Prospect Pool ID.</td></tr>
-<tr>
-<td>prospect_pool_stage_id</td><td>No</td><td>integer</td><td>Prospect Pool Stage ID.  <code class="prettyprint">prospect_pool_id</code> is required, and the prospect pool stage must belong to the given prospect pool.</td></tr>
-<tr>
-<td>prospect_owner_id</td><td>No</td><td>integer</td><td>User ID of the prospect owner.</td></tr>
-<tr>
-<td>prospective_department_id</td><td>No</td><td>integer</td><td>Department ID to consider this prospect for.</td></tr>
-<tr>
-<td>prospective_office_id</td><td>No</td><td>integer</td><td>Office ID to consider this prospect for.  <code class="prettyprint">prospective_department_id</code> is required in order to set a prospective office.</td></tr>
-</tbody></table>
 
 <h2 id="post-add-note">POST: Add Note</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="s1">'https://harvest.greenhouse.io/v1/candidates/{id}/activity_feed/notes'</span>
@@ -5068,7 +5072,7 @@ X-RateLimit-Remaining: 49
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Anonymize the data associated with a candidate. Please note that this endpoint is only available to customers with Enterprise-level accounts.</p>
+<p>Anonymize the data associated with a candidate. Please note that this endpoint is only available to customers with Expert-level accounts.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -7219,9 +7223,9 @@ X-RateLimit-Remaining: 49
 <td>external_id**</td><td>no</td><td>string</td><td>The external_id for the office.</td></tr>
 </tbody></table>
 
-<p>* - The tiered department feature is available only for customers with the Pro or Enterprise Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
+<p>* - The tiered department feature is available only for customers with the Advanced or Expert Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
 
-<p>** - The external_id feature is available only for customers with the Enterprise Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
+<p>** - The external_id feature is available only for customers with the Expert Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
 
           <h1 id="education">Education</h1>
 
@@ -9708,6 +9712,8 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-11T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"closed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
   </span><span class="nt">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25907</span><span class="p">,</span><span class="w">
@@ -9907,6 +9913,12 @@ X-RateLimit-Remaining: 49
 <td>openings[].application_id</td><td>If the opening is closed and a candidate was hired to fill the opening, this is the ID of the candidate&rsquo;s application. Otherwise, null.</td></tr>
 <tr>
 <td>openings[].close_reason</td><td>If the opening is closed, it may or may not have a reason for the closure. This contains the id and name of the close reason.</td></tr>
+<tr>
+<td>is_template</td><td>Is this job designated as a template used to create other jobs. This may be true, false, or null. Null is an indication this job was created before template job feature.</td></tr>
+<tr>
+<td></td><td></td></tr>
+<tr>
+<td>copied_from_id</td><td>If this job was copied from another job, this field contains the id of the source job.</td></tr>
 </tbody></table>
 
 <h2 id="get-list-jobs">GET: List Jobs</h2>
@@ -9929,6 +9941,8 @@ X-RateLimit-Remaining: 49
     </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-11T14:42:58Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"closed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
     </span><span class="nt">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25907</span><span class="p">,</span><span class="w">
@@ -10155,6 +10169,8 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-11T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"closed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
   </span><span class="nt">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25907</span><span class="p">,</span><span class="w">
@@ -10386,6 +10402,8 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-11T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"closed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
   </span><span class="nt">"departments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w">
@@ -10703,6 +10721,8 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Looking for the best!"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"confidential"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10T19:01:46.078Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10T19:01:46.078Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T14:42:58Z"</span><span class="p">,</span><span class="w">
@@ -10937,6 +10957,8 @@ X-RateLimit-Remaining: 49
   </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Looking for the best!"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"confidential"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"is_template"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"copied_from_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10T19:01:46.078Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"opened_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10T19:01:46.078Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-10T19:01:46.078Z"</span><span class="p">,</span><span class="w">
@@ -12599,9 +12621,9 @@ X-RateLimit-Remaining: 49
 <td><code class="prettyprint">external_id</code>**</td><td>no</td><td>string</td><td>The external_id for the office.</td></tr>
 </tbody></table>
 
-<p>* - The tiered office feature is available only for customers with the Pro or Enterprise Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
+<p>* - The tiered office feature is available only for customers with the Advanced or Expert Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
 
-<p>** - The external_id feature is available only for customers with the Enterprise Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
+<p>** - The external_id feature is available only for customers with the Expert Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
 
           <h1 id="prospect-pools">Prospect Pools</h1>
 
@@ -15104,7 +15126,7 @@ only delete Scheduled Interviews in the following statues: Scheduled, Awaiting F
 </tbody></table>
 
 <p>* - A newly created user will not be able to login until they create a password via the invitation link or configured in an SSO system.
-** - The employee_id feature is available only for customers with the Enterprise Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
+** - The employee_id feature is available only for customers with the Expert Greenhouse Recruiting package. Use of this field will return an error for other Greenhouse Recruiting customers.</p>
 
 <h2 id="post-add-e-mail-address-to-user">POST: Add E-mail Address To User</h2>
 <pre class="highlight shell"><code>curl -X POST <span class="s1">'https://harvest.greenhouse.io/v1/users/{id}/email_addresses'</span>

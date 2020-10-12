@@ -299,7 +299,7 @@ The partner_interview_id should not be confused with partner_test_id. While part
 
 <h3 id="if-you-have-implemented-the-polling-option">If you have implemented the polling option:</h3>
 
-<aside class="warning">The polling option has been deprecated as of October 1, 2019. All Assessment API implementations after this date must use the PATCH Completed Test endpoint.</aside>
+<aside class="warning">The polling option has been deprecated as of October 1, 2019. All Assessment API implementations after this date must use the PATCH Completed Test endpoint. However, existing integrations will continue to work with the original test status method.</aside>
 
 <p>After a successful <code class="prettyprint">send_test</code> request, Greenhouse will check whether the test instance has been completed by polling the <code class="prettyprint">test_status</code> endpoint hourly. We will discontinue polling the <code class="prettyprint">test_status</code> endpoint after we receive a <code class="prettyprint">partner_status</code> of <code class="prettyprint">complete</code>, or after 8 weeks has passed since the test was sent.</p>
 
